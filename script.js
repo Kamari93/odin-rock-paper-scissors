@@ -114,8 +114,9 @@ function game() {
     let cpuTotal = 0;
     let tie = 0;
 
+    let rounds = parseInt(prompt("How many rounds would you like to play?: "))
     // loop through the playRound fn 5 times 
-    for (let rounds = 0; rounds < 5; rounds++) {
+    for (let i = 0; i < rounds; i++) {
         // get values for user and cpu from fn return vals
         let user = validInput();
         let cpu = getComputerChoice();
@@ -135,13 +136,24 @@ function game() {
         // Test for desired total outputs
         console.log(`user:${userTotal} | cpuTotal:${cpuTotal} | tieTotal: ${tie}`)
     }
-    console.log(`user:${userTotal} | cpuTotal:${cpuTotal} | tieTotal: ${tie}`)
+    // Test that the totals work outside the loop
+    // console.log(`user:${userTotal} | cpuTotal:${cpuTotal} | tieTotal: ${tie}`)
 
     // determine the winner after the specified rounds are completed
     if (userTotal > cpuTotal) {
-        console.log(`You Won best ${userTotal} out of 5.`)
+        console.log(`You Won best ${userTotal} out of ${rounds} with ${tie} tie(s).`)
+    } else if (userTotal < cpuTotal) {
+        console.log(`The CPU beat you by ${cpuTotal - userTotal} round(s) in a ${rounds} round match with ${tie} tie(s).`)
     } else {
-        console.log(`The CPU beat you by ${cpuTotal - userTotal} round(s) in a 5 round match.`)
+        console.log(`It was a draw you won ${userTotal} round(s) and the cpu won ${cpuTotal} round(s) in a ${rounds} round match with ${tie} ties.`)
+    }
+
+    playAgain = prompt("Would you like to play again type 'yes' or 'no'? ").toLowerCase()
+
+    if (playAgain === "yes") {
+        game();
+    } else {
+        alert("Thanks for playing!")
     }
 }
 

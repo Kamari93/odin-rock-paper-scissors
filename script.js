@@ -148,6 +148,7 @@ function game() {
         console.log(`It was a draw you won ${userTotal} round(s) and the cpu won ${cpuTotal} round(s) in a ${rounds} round match with ${tie} ties.`)
     }
 
+    // prompt for user to input if they'd like to play again
     playAgain = prompt("Would you like to play again type 'yes' or 'no'? ").toLowerCase()
 
     if (playAgain === "yes") {

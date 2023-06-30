@@ -18,8 +18,10 @@ let validInput;
 do {
     // prompt user to input rps and make userInput case insensitive
     let userInput = prompt('Please select your weapon (rock, paper, or, scissors): ').toLowerCase();
+    // convert user's input to Title case
+    userInput = userInput.charAt(0).toUpperCase() + userInput.slice(1);
     // make sure user only inputs rps values
-    if (userInput === "rock" || userInput === "paper" || userInput === "scissors") {
+    if (userInput === "Rock" || userInput === "Paper" || userInput === "Scissors") {
         validInput = userInput
     }
     // run a while loop that only breaks if user inputs a valid answer; !validInput same as validInput === undefined
@@ -32,7 +34,7 @@ console.log(`User Chose: ${validInput}`);
 // create getComputerChoice function that randomly selects between rps
 function getComputerChoice() {
     // create an array of options
-    let choices = ["rock", "paper", "scissors"];
+    let choices = ["Rock", "Paper", "Scissors"];
     // create var that randomly chooses from arr index
     let randomChoice = choices[Math.floor(Math.random() * choices.length)];
     // return the choice from the function

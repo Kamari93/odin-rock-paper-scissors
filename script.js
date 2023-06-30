@@ -135,6 +135,14 @@ function game() {
         // Test for desired total outputs
         console.log(`user:${userTotal} | cpuTotal:${cpuTotal} | tieTotal: ${tie}`)
     }
+    console.log(`user:${userTotal} | cpuTotal:${cpuTotal} | tieTotal: ${tie}`)
+
+    // determine the winner after the specified rounds are completed
+    if (userTotal > cpuTotal) {
+        console.log(`You Won best ${userTotal} out of 5.`)
+    } else {
+        console.log(`The CPU beat you by ${cpuTotal - userTotal} round(s) in a 5 round match.`)
+    }
 }
 
 game()

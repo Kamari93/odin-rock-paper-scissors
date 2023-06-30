@@ -13,23 +13,29 @@ console.log('Keep going')
 // 4. Create funct called game that uses the above funct to play 5 rounds keeps score and declares a winner at end
 
 // ******* User Input *********
-// Only change this var if user inputs the correct info
-let validInput;
-do {
-    // prompt user to input rps and make userInput case insensitive
-    let userInput = prompt('Please select your weapon (rock, paper, or, scissors): ').toLowerCase();
-    // convert user's input to Title case
-    userInput = userInput.charAt(0).toUpperCase() + userInput.slice(1);
-    // make sure user only inputs rps values
-    if (userInput === "Rock" || userInput === "Paper" || userInput === "Scissors") {
-        validInput = userInput
-    }
-    // run a while loop that only breaks if user inputs a valid answer; !validInput same as validInput === undefined
-} while (!validInput);
+function validInput() {
+    // Only change this var if user inputs the correct info
+    let validInput;
+    do {
+        // prompt user to input rps and make userInput case insensitive
+        let userInput = prompt('Please select your weapon (rock, paper, or, scissors): ').toLowerCase();
+        // convert user's input to Title case
+        userInput = userInput.charAt(0).toUpperCase() + userInput.slice(1);
+        // make sure user only inputs rps values
+        if (userInput === "Rock" || userInput === "Paper" || userInput === "Scissors") {
+            validInput = userInput
+        }
+        // run a while loop that only breaks if user inputs a valid answer; !validInput same as validInput === undefined
+    } while (!validInput);
 
-// Test if valid user recieves desired output
-console.log(`User Chose: ${validInput}`);
+    // Test if valid user recieves desired output
+    // console.log(`User Chose: ${validInput}`);
+    return validInput;
+}
 
+// Test validInput to ensure it shows desired output
+// let Input = validInput();
+// console.log(`Your input: ${Input}`)
 
 // ******* Computer Random Choice Funct *********
 // create getComputerChoice function that randomly selects between rps
@@ -43,8 +49,10 @@ function getComputerChoice() {
 }
 
 // Test to see if getComputerChoice gives desired output
-let computerSelection = getComputerChoice();
-console.log(`CPU Chose: ${computerSelection}`);
+// let computerSelection = getComputerChoice();
+// console.log(`CPU Chose: ${computerSelection}`);
+
+
 
 // ******* Play a single round of rps *********
 /**
@@ -88,5 +96,30 @@ function playRound(user, cpu) {
 }
 
 // Test the play function to make sure outputs desired outcome
-let play = playRound(validInput, computerSelection);
-console.log(play);
+// let play = playRound(validInput, computerSelection);
+// console.log(play);
+
+// ******* Play game function *********
+/**
+ * create a fuction that takes in 1 param that specifies number of desired games played
+ * the funct takes in the validInput and play game fn and iterates over them
+ * the function counts number of games, userTotal, and cpuTotal
+ * Once number of games met compares winner totals and outputs winner and scores
+ * if there is a tie no count for either total
+ */
+
+function game() {
+    // loop through the playRound fn 5 times 
+    for (let rounds = 0; rounds < 5; rounds++) {
+        // get values for user and cpu from fn return vals
+        let user = validInput();
+        let cpu = getComputerChoice();
+        play = playRound(user, cpu)
+
+        // test for desired output from play fn
+        console.log(play)
+    }
+    // return rounds
+}
+
+game()

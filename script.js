@@ -26,6 +26,7 @@ do {
     }
     // run a while loop that only breaks if user inputs a valid answer; !validInput same as validInput === undefined
 } while (!validInput);
+
 // Test if valid user recieves desired output
 console.log(`User Chose: ${validInput}`);
 
@@ -44,3 +45,48 @@ function getComputerChoice() {
 // Test to see if getComputerChoice gives desired output
 let computerSelection = getComputerChoice();
 console.log(`CPU Chose: ${computerSelection}`);
+
+// ******* Play a single round of rps *********
+/**
+ * paper > rock; rock > scissors; scissors > paper
+ * if the user.value === cpu.value then it's a draw no-one wins and game -->
+ * doesn't countdown/decrement (for later funct)
+ * 
+ */
+// create playRound funct that plays a single round and takes in 2 params: user & cpu
+function playRound(user, cpu) {
+    // if user chooses rock 
+    if (user === "Rock") {
+        if (cpu === "Paper") {
+            return `You lose! ${cpu} beats ${user}!`;
+        } else if (cpu === "Scissors") {
+            return `You win! ${user} beats ${cpu}!`;
+        } else {
+            return `It's a tie ${user} can't beat ${cpu}`;
+        }
+    }
+    // if user chooses paper
+    else if (user === "Paper") {
+        if (cpu === "Scissors") {
+            return `You lose! ${cpu} beats ${user}!`;
+        } else if (cpu === "Rock") {
+            return `You win! ${user} beats ${cpu}!`;
+        } else {
+            return `It's a tie ${user} can't beat ${cpu}`;
+        }
+    }
+    // if user chooses scissors
+    else {
+        if (cpu === "Rock") {
+            return `You lose! ${cpu} beats ${user}!`;
+        } else if (cpu === "Paper") {
+            return `You win! ${user} beats ${cpu}!`;
+        } else {
+            return `It's a tie ${user} can't beat ${cpu}`;
+        }
+    }
+}
+
+// Test the play function to make sure outputs desired outcome
+let play = playRound(validInput, computerSelection);
+console.log(play);

@@ -13,14 +13,32 @@ console.log('Keep going')
 // 4. Create funct called game that uses the above funct to play 5 rounds keeps score and declares a winner at end
 
 // ******* User Input *********
-// prompt user to input rps and make userInput case insensitive
-let userInput = prompt('Please select your weapon (rock, paper, or, scissors): ').toLocaleLowerCase();
-
-// make sure user only inputs rps values
-while (userInput !== "rock" || userInput !== "paper" || userInput !== "scissors") {
-    userInput = prompt('Please make sure to select your weapon with these options (rock, paper, or, scissors): ').toLocaleLowerCase();
+// Only change this var if user inputs the correct info
+let validInput;
+do {
+    // prompt user to input rps and make userInput case insensitive
+    let userInput = prompt('Please select your weapon (rock, paper, or, scissors): ').toLowerCase();
+    // make sure user only inputs rps values
     if (userInput === "rock" || userInput === "paper" || userInput === "scissors") {
-        break;
+        validInput = userInput
     }
+    // run a while loop that only breaks if user inputs a valid answer; !validInput same as validInput === undefined
+} while (!validInput);
+// Test if valid user recieves desired output
+console.log(`User Chose: ${validInput}`);
+
+
+// ******* Computer Random Choice Funct *********
+// create getComputerChoice function that randomly selects between rps
+function getComputerChoice() {
+    // create an array of options
+    let choices = ["rock", "paper", "scissors"];
+    // create var that randomly chooses from arr index
+    let randomChoice = choices[Math.floor(Math.random() * choices.length)];
+    // return the choice from the function
+    return randomChoice;
 }
-// console.log(userInput)
+
+// Test to see if getComputerChoice gives desired output
+let computerSelection = getComputerChoice();
+console.log(`CPU Chose: ${computerSelection}`);

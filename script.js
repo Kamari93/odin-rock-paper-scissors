@@ -109,17 +109,32 @@ function playRound(user, cpu) {
  */
 
 function game() {
+    // create counter vars for userTotal, cpuTotal, and tie
+    let userTotal = 0;
+    let cpuTotal = 0;
+    let tie = 0;
+
     // loop through the playRound fn 5 times 
     for (let rounds = 0; rounds < 5; rounds++) {
         // get values for user and cpu from fn return vals
         let user = validInput();
         let cpu = getComputerChoice();
-        play = playRound(user, cpu)
+        // set play to be the called val of each playRound iteration
+        let play = playRound(user, cpu)
 
         // test for desired output from play fn
         console.log(play)
+        // increment userTotal or cpuTotal if they win a round else add to tie
+        if (play.includes('win')) {
+            userTotal++;
+        } else if (play.includes('lose')) {
+            cpuTotal++;
+        } else {
+            tie++;
+        }
+        // Test for desired total outputs
+        console.log(`user:${userTotal} | cpuTotal:${cpuTotal} | tieTotal: ${tie}`)
     }
-    // return rounds
 }
 
 game()

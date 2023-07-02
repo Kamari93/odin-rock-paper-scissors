@@ -26,6 +26,8 @@ function validInput() {
         // make sure user only inputs rps values
         if (userInput === "Rock" || userInput === "Paper" || userInput === "Scissors") {
             validInput = userInput
+        } else {
+            alert("Invalid input, please try again!")
         }
         // run a while loop that only breaks if user inputs a valid answer; !validInput same as validInput === undefined
     } while (!validInput);

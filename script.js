@@ -19,6 +19,7 @@ function validInput() {
     do {
         // prompt user to input rps and make userInput case insensitive
         let userInput = prompt('Please select your weapon (rock, paper, or, scissors): ').toLowerCase();
+
         // convert user's input to Title case
         userInput = userInput.charAt(0).toUpperCase() + userInput.slice(1);
 

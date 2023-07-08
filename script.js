@@ -1,5 +1,11 @@
 console.log('Keep going')
 
+// DOM Manipulation
+const rounds = document.querySelector("#rounds");
+const rock = document.querySelector(".rock");
+const paper = document.querySelector(".paper");
+const scissors = document.querySelector(".scissors");
+
 /**
  * Is there a ui? No 
  * What are the inputs? user enters choice of (r,p,s) and cpu random input of (r,p,s)
@@ -162,4 +168,4 @@ function game() {
     }
 }
 
-game()
+// game()

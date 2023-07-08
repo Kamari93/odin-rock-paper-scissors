@@ -3,24 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="title">
         <h1>Rock Paper Scissors Man v Machine</h1>
+        <p>Paper beats Rock, Rock beats Scissors, Scissors beats Paper</p>
     </div>
     <div class="rounds">
-        <label for="rounds">How many rounds would you like to play (please choose between 1 - 10)?</label>
-        <input type="number" id="rounds" min="1" max="10">
+        <h1>Round: </h1>
     </div>
-    <div class="buttons">
-        <button class="btn rock">ROCK</button>
-        <button class="btn paper">PAPER</button>
-        <button class="btn scissors">SCISSORS</button>
+    <div class="battle-container">
+        <div class="container">
+            <h2>Man</h2>
+            <div class="user-buttons">
+                <button class="btn rock"><i class="far fa-hand-rock"></i></button>
+                <button class="btn paper"><i class="far fa-hand-paper"></i></button>
+                <button class="btn scissors"><i class="far fa-hand-scissors"></i></button>
+            </div>
+            <p>You Selected: </p>
+        </div>
+        <div class="results">
+            <h2 class="title-results">Results</h2>
+        </div>
+        <div class="cpu-container container">
+            <h2>Machine</h2>
+            <button class="cpu-btn"><i class='fas fa-robot'></i></button>
+            <p>Computer Selected: </p>
+        </div>
     </div>
-    <div class="results">
-        <h1 class="title-results">Battle Results</h1>
+    <div class="score-board">
+        <div class="user-score score">
+            <h2>Your Score: /5</h2>
+        </div>
+        <div class="reset">
+            <button>Reset</button>
+        </div>
+        <div class="machine-score score">
+            <h2>Machine's Score: /5</h2>
+        </div>
     </div>
 </body>
 <script src="script.js"></script>

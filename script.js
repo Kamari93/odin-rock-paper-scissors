@@ -5,6 +5,23 @@ const rounds = document.querySelector("#rounds");
 const rock = document.querySelector(".rock");
 const paper = document.querySelector(".paper");
 const scissors = document.querySelector(".scissors");
+let choice;
+
+// add event listeners to each option and if clicked update choice
+rock.addEventListener("click", () => {
+    choice = "rock";
+    console.log(choice)
+});
+
+paper.addEventListener("click", () => {
+    choice = "paper";
+    console.log(choice)
+});
+
+scissors.addEventListener("click", () => {
+    choice = "scissors";
+    console.log(choice)
+});
 
 /**
  * Is there a ui? No 

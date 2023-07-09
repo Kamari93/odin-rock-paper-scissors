@@ -30,38 +30,11 @@ let play;
 // add event listeners to each option and if clicked update choice
 rock.addEventListener("click", () => {
     userChoice = "Rock";
+    // console.log(userChoice)
     let cpu = getComputerChoice();
     play = playRound(userChoice, cpu);
     gamesPlayed++;
     game(play, gamesPlayed, cpu)
-    // console.log(userChoice);
-    // if (play.includes('win')) {
-    //     userTotal++;
-    // } else if (play.includes('lose')) {
-    //     cpuTotal++;
-    // } else {
-    //     tie++;
-    // }
-    // console.log(`user:${userTotal} | cpuTotal:${cpuTotal} | tieTotal: ${tie}`);
-    // results = [`{user:${userTotal}`, `{cpuTotal:${cpuTotal}`, `Ties: ${tie}`];
-
-    // if (gamesPlayed % 5 === 0) {
-    //     // determine the winner after the specified rounds are completed
-    //     if (userTotal > cpuTotal) {
-    //         console.log(`You Won best ${userTotal} out of ${gamesPlayed} with ${tie} tie(s).`)
-    //     } else if (userTotal < cpuTotal) {
-    //         console.log(`The CPU beat you by ${cpuTotal - userTotal} round(s) in a ${gamesPlayed} round match with ${tie} tie(s).`)
-    //     } else {
-    //         console.log(`It was a draw you won ${userTotal} round(s) and the cpu won ${cpuTotal} round(s) in a ${gamesPlayed} round match with ${tie} ties.`)
-    //     }
-    // };
-
-    // currentRound.textContent = `Round: ${gamesPlayed}`;
-    // userWeapon.textContent = `You Selected: ${userChoice}.`;
-    // cpuWeapon.textContent = `Machine Selected: ${cpu}.`;
-    // userScore.textContent = `Your Score: ${userTotal}/${gamesPlayed}`;
-    // cpuScore.textContent = `Machine's Score: ${cpuTotal}/${gamesPlayed}`;
-    // result.textContent = `${results[2]}`;
 });
 
 paper.addEventListener("click", () => {
@@ -71,33 +44,6 @@ paper.addEventListener("click", () => {
     play = playRound(userChoice, cpu);
     gamesPlayed++;
     game(play, gamesPlayed, cpu)
-    // if (play.includes('win')) {
-    //     userTotal++;
-    // } else if (play.includes('lose')) {
-    //     cpuTotal++;
-    // } else {
-    //     tie++;
-    // }
-    // console.log(`user:${userTotal} | cpuTotal:${cpuTotal} | tieTotal: ${tie}`);
-    // results = [`{user:${userTotal}`, `{cpuTotal:${cpuTotal}`, `Ties: ${tie}`];
-
-    // if (gamesPlayed % 5 === 0) {
-    //     // determine the winner after the specified rounds are completed
-    //     if (userTotal > cpuTotal) {
-    //         console.log(`You Won best ${userTotal} out of ${gamesPlayed} with ${tie} tie(s).`)
-    //     } else if (userTotal < cpuTotal) {
-    //         console.log(`The CPU beat you by ${cpuTotal - userTotal} round(s) in a ${gamesPlayed} round match with ${tie} tie(s).`)
-    //     } else {
-    //         console.log(`It was a draw you won ${userTotal} round(s) and the cpu won ${cpuTotal} round(s) in a ${gamesPlayed} round match with ${tie} ties.`)
-    //     }
-    // };
-    // currentRound.textContent = `Round: ${gamesPlayed}`;
-    // userWeapon.textContent = `You Selected: ${userChoice}.`;
-    // cpuWeapon.textContent = `Machine Selected: ${cpu}.`;
-    // userScore.textContent = `Your Score: ${userTotal}/${gamesPlayed}`;
-    // cpuScore.textContent = `Machine's Score: ${cpuTotal}/${gamesPlayed}`;
-    // result.textContent = `${results[2]}`;
-
 });
 
 scissors.addEventListener("click", () => {
@@ -107,32 +53,6 @@ scissors.addEventListener("click", () => {
     play = playRound(userChoice, cpu);
     gamesPlayed++;
     game(play, gamesPlayed, cpu)
-    // if (play.includes('win')) {
-    //     userTotal++;
-    // } else if (play.includes('lose')) {
-    //     cpuTotal++;
-    // } else {
-    //     tie++;
-    // }
-    // console.log(`user:${userTotal} | cpuTotal:${cpuTotal} | tieTotal: ${tie}`);
-    // results = [`{user:${userTotal}`, `{cpuTotal:${cpuTotal}`, `Ties: ${tie}`];
-
-    // if (gamesPlayed % 5 === 0) {
-    //     // determine the winner after the specified rounds are completed
-    //     if (userTotal > cpuTotal) {
-    //         console.log(`You Won best ${userTotal} out of ${gamesPlayed} with ${tie} tie(s).`)
-    //     } else if (userTotal < cpuTotal) {
-    //         console.log(`The CPU beat you by ${cpuTotal - userTotal} round(s) in a ${gamesPlayed} round match with ${tie} tie(s).`)
-    //     } else {
-    //         console.log(`It was a draw you won ${userTotal} round(s) and the cpu won ${cpuTotal} round(s) in a ${gamesPlayed} round match with ${tie} ties.`)
-    //     }
-    // };
-    // currentRound.textContent = `Round: ${gamesPlayed}`;
-    // userWeapon.textContent = `You Selected: ${userChoice}.`;
-    // cpuWeapon.textContent = `Machine Selected: ${cpu}.`;
-    // userScore.textContent = `Your Score: ${userTotal}/${gamesPlayed}`;
-    // cpuScore.textContent = `Machine's Score: ${cpuTotal}/${gamesPlayed}`;
-    // result.textContent = `${results[2]}`;
 });
 
 function game(play, gamesPlayed, cpu) {
@@ -163,31 +83,6 @@ function game(play, gamesPlayed, cpu) {
     cpuScore.textContent = `Machine's Score: ${cpuTotal}/${gamesPlayed}`;
     result.textContent = `${results[2]}`;
 }
-
-// function compareTotal(play, userTotal, cpuTotal, tie) {
-//     if (play.includes('win')) {
-//         userTotal++;
-//     } else if (play.includes('lose')) {
-//         cpuTotal++;
-//     } else {
-//         tie++;
-//     }
-//     console.log(`user:${userTotal} | cpuTotal:${cpuTotal} | tieTotal: ${tie}`)
-// };
-
-// function determineWinner(gamesPlayed, userTotal, cpuTotal, tie) {
-//     if (gamesPlayed % 5 === 0) {
-//         // determine the winner after the specified rounds are completed
-//         if (userTotal > cpuTotal) {
-//             console.log(`You Won best ${userTotal} out of ${gamesPlayed} with ${tie} tie(s).`)
-//         } else if (userTotal < cpuTotal) {
-//             console.log(`The CPU beat you by ${cpuTotal - userTotal} round(s) in a ${gamesPlayed} round match with ${tie} tie(s).`)
-//         } else {
-//             console.log(`It was a draw you won ${userTotal} round(s) and the cpu won ${cpuTotal} round(s) in a ${gamesPlayed} round match with ${tie} ties.`)
-//         }
-//     }
-// }
-
 
 
 // ******* Computer Random Choice Funct *********

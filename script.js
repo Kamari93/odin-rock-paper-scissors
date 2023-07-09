@@ -11,6 +11,12 @@ const rock = document.querySelector(".rock");
 const paper = document.querySelector(".paper");
 const scissors = document.querySelector(".scissors");
 const reset = document.querySelector(".reset-btn");
+let userWeapon = document.querySelector(".user-choice");
+let cpuWeapon = document.querySelector(".cpu-choice");
+let userScore = document.querySelector(".man-score");
+let cpuScore = document.querySelector(".cpu-score");
+let result = document.querySelector(".title-results");
+let currentRound = document.querySelector(".current-round");
 
 
 let userChoice;
@@ -18,6 +24,7 @@ let userTotal = 0;
 let cpuTotal = 0;
 let tie = 0;
 let gamesPlayed = 0;
+let results;
 let play;
 
 // add event listeners to each option and if clicked update choice
@@ -26,26 +33,35 @@ rock.addEventListener("click", () => {
     let cpu = getComputerChoice();
     play = playRound(userChoice, cpu);
     gamesPlayed++;
+    game(play, gamesPlayed, cpu)
     // console.log(userChoice);
-    if (play.includes('win')) {
-        userTotal++;
-    } else if (play.includes('lose')) {
-        cpuTotal++;
-    } else {
-        tie++;
-    }
-    console.log(`user:${userTotal} | cpuTotal:${cpuTotal} | tieTotal: ${tie}`)
+    // if (play.includes('win')) {
+    //     userTotal++;
+    // } else if (play.includes('lose')) {
+    //     cpuTotal++;
+    // } else {
+    //     tie++;
+    // }
+    // console.log(`user:${userTotal} | cpuTotal:${cpuTotal} | tieTotal: ${tie}`);
+    // results = [`{user:${userTotal}`, `{cpuTotal:${cpuTotal}`, `Ties: ${tie}`];
 
-    if (gamesPlayed % 5 === 0) {
-        // determine the winner after the specified rounds are completed
-        if (userTotal > cpuTotal) {
-            console.log(`You Won best ${userTotal} out of ${gamesPlayed} with ${tie} tie(s).`)
-        } else if (userTotal < cpuTotal) {
-            console.log(`The CPU beat you by ${cpuTotal - userTotal} round(s) in a ${gamesPlayed} round match with ${tie} tie(s).`)
-        } else {
-            console.log(`It was a draw you won ${userTotal} round(s) and the cpu won ${cpuTotal} round(s) in a ${gamesPlayed} round match with ${tie} ties.`)
-        }
-    }
+    // if (gamesPlayed % 5 === 0) {
+    //     // determine the winner after the specified rounds are completed
+    //     if (userTotal > cpuTotal) {
+    //         console.log(`You Won best ${userTotal} out of ${gamesPlayed} with ${tie} tie(s).`)
+    //     } else if (userTotal < cpuTotal) {
+    //         console.log(`The CPU beat you by ${cpuTotal - userTotal} round(s) in a ${gamesPlayed} round match with ${tie} tie(s).`)
+    //     } else {
+    //         console.log(`It was a draw you won ${userTotal} round(s) and the cpu won ${cpuTotal} round(s) in a ${gamesPlayed} round match with ${tie} ties.`)
+    //     }
+    // };
+
+    // currentRound.textContent = `Round: ${gamesPlayed}`;
+    // userWeapon.textContent = `You Selected: ${userChoice}.`;
+    // cpuWeapon.textContent = `Machine Selected: ${cpu}.`;
+    // userScore.textContent = `Your Score: ${userTotal}/${gamesPlayed}`;
+    // cpuScore.textContent = `Machine's Score: ${cpuTotal}/${gamesPlayed}`;
+    // result.textContent = `${results[2]}`;
 });
 
 paper.addEventListener("click", () => {
@@ -54,26 +70,34 @@ paper.addEventListener("click", () => {
     let cpu = getComputerChoice();
     play = playRound(userChoice, cpu);
     gamesPlayed++;
-    // console.log(userChoice);
-    if (play.includes('win')) {
-        userTotal++;
-    } else if (play.includes('lose')) {
-        cpuTotal++;
-    } else {
-        tie++;
-    }
-    console.log(`user:${userTotal} | cpuTotal:${cpuTotal} | tieTotal: ${tie}`)
+    game(play, gamesPlayed, cpu)
+    // if (play.includes('win')) {
+    //     userTotal++;
+    // } else if (play.includes('lose')) {
+    //     cpuTotal++;
+    // } else {
+    //     tie++;
+    // }
+    // console.log(`user:${userTotal} | cpuTotal:${cpuTotal} | tieTotal: ${tie}`);
+    // results = [`{user:${userTotal}`, `{cpuTotal:${cpuTotal}`, `Ties: ${tie}`];
 
-    if (gamesPlayed % 5 === 0) {
-        // determine the winner after the specified rounds are completed
-        if (userTotal > cpuTotal) {
-            console.log(`You Won best ${userTotal} out of ${gamesPlayed} with ${tie} tie(s).`)
-        } else if (userTotal < cpuTotal) {
-            console.log(`The CPU beat you by ${cpuTotal - userTotal} round(s) in a ${gamesPlayed} round match with ${tie} tie(s).`)
-        } else {
-            console.log(`It was a draw you won ${userTotal} round(s) and the cpu won ${cpuTotal} round(s) in a ${gamesPlayed} round match with ${tie} ties.`)
-        }
-    }
+    // if (gamesPlayed % 5 === 0) {
+    //     // determine the winner after the specified rounds are completed
+    //     if (userTotal > cpuTotal) {
+    //         console.log(`You Won best ${userTotal} out of ${gamesPlayed} with ${tie} tie(s).`)
+    //     } else if (userTotal < cpuTotal) {
+    //         console.log(`The CPU beat you by ${cpuTotal - userTotal} round(s) in a ${gamesPlayed} round match with ${tie} tie(s).`)
+    //     } else {
+    //         console.log(`It was a draw you won ${userTotal} round(s) and the cpu won ${cpuTotal} round(s) in a ${gamesPlayed} round match with ${tie} ties.`)
+    //     }
+    // };
+    // currentRound.textContent = `Round: ${gamesPlayed}`;
+    // userWeapon.textContent = `You Selected: ${userChoice}.`;
+    // cpuWeapon.textContent = `Machine Selected: ${cpu}.`;
+    // userScore.textContent = `Your Score: ${userTotal}/${gamesPlayed}`;
+    // cpuScore.textContent = `Machine's Score: ${cpuTotal}/${gamesPlayed}`;
+    // result.textContent = `${results[2]}`;
+
 });
 
 scissors.addEventListener("click", () => {
@@ -82,6 +106,36 @@ scissors.addEventListener("click", () => {
     let cpu = getComputerChoice();
     play = playRound(userChoice, cpu);
     gamesPlayed++;
+    game(play, gamesPlayed, cpu)
+    // if (play.includes('win')) {
+    //     userTotal++;
+    // } else if (play.includes('lose')) {
+    //     cpuTotal++;
+    // } else {
+    //     tie++;
+    // }
+    // console.log(`user:${userTotal} | cpuTotal:${cpuTotal} | tieTotal: ${tie}`);
+    // results = [`{user:${userTotal}`, `{cpuTotal:${cpuTotal}`, `Ties: ${tie}`];
+
+    // if (gamesPlayed % 5 === 0) {
+    //     // determine the winner after the specified rounds are completed
+    //     if (userTotal > cpuTotal) {
+    //         console.log(`You Won best ${userTotal} out of ${gamesPlayed} with ${tie} tie(s).`)
+    //     } else if (userTotal < cpuTotal) {
+    //         console.log(`The CPU beat you by ${cpuTotal - userTotal} round(s) in a ${gamesPlayed} round match with ${tie} tie(s).`)
+    //     } else {
+    //         console.log(`It was a draw you won ${userTotal} round(s) and the cpu won ${cpuTotal} round(s) in a ${gamesPlayed} round match with ${tie} ties.`)
+    //     }
+    // };
+    // currentRound.textContent = `Round: ${gamesPlayed}`;
+    // userWeapon.textContent = `You Selected: ${userChoice}.`;
+    // cpuWeapon.textContent = `Machine Selected: ${cpu}.`;
+    // userScore.textContent = `Your Score: ${userTotal}/${gamesPlayed}`;
+    // cpuScore.textContent = `Machine's Score: ${cpuTotal}/${gamesPlayed}`;
+    // result.textContent = `${results[2]}`;
+});
+
+function game(play, gamesPlayed, cpu) {
     if (play.includes('win')) {
         userTotal++;
     } else if (play.includes('lose')) {
@@ -89,7 +143,8 @@ scissors.addEventListener("click", () => {
     } else {
         tie++;
     }
-    console.log(`user:${userTotal} | cpuTotal:${cpuTotal} | tieTotal: ${tie}`)
+    console.log(`user:${userTotal} | cpuTotal:${cpuTotal} | tieTotal: ${tie}`);
+    results = [`{user:${userTotal}`, `{cpuTotal:${cpuTotal}`, `Ties: ${tie}`];
 
     if (gamesPlayed % 5 === 0) {
         // determine the winner after the specified rounds are completed
@@ -100,8 +155,14 @@ scissors.addEventListener("click", () => {
         } else {
             console.log(`It was a draw you won ${userTotal} round(s) and the cpu won ${cpuTotal} round(s) in a ${gamesPlayed} round match with ${tie} ties.`)
         }
-    }
-});
+    };
+    currentRound.textContent = `Round: ${gamesPlayed}`;
+    userWeapon.textContent = `You Selected: ${userChoice}.`;
+    cpuWeapon.textContent = `Machine Selected: ${cpu}.`;
+    userScore.textContent = `Your Score: ${userTotal}/${gamesPlayed}`;
+    cpuScore.textContent = `Machine's Score: ${cpuTotal}/${gamesPlayed}`;
+    result.textContent = `${results[2]}`;
+}
 
 // function compareTotal(play, userTotal, cpuTotal, tie) {
 //     if (play.includes('win')) {

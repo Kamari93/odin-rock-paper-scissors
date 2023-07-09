@@ -15,7 +15,7 @@
         <p>Paper beats Rock, Rock beats Scissors, Scissors beats Paper</p>
     </div>
     <div class="rounds">
-        <h1>Round: </h1>
+        <h1 class="current-round">Round: </h1>
     </div>
     <div class="battle-container">
         <div class="container">
@@ -25,7 +25,7 @@
                 <button class="btn paper"><i class="far fa-hand-paper"></i></button>
                 <button class="btn scissors"><i class="far fa-hand-scissors"></i></button>
             </div>
-            <p>You Selected: </p>
+            <p class="user-choice">You Selected: </p>
         </div>
         <div class="results">
             <h2 class="title-results">Results</h2>
@@ -33,18 +33,18 @@
         <div class="cpu-container container">
             <h2>Machine</h2>
             <button class="cpu-btn"><i class='fas fa-robot'></i></button>
-            <p>Computer Selected: </p>
+            <p class="cpu-choice">Computer Selected: </p>
         </div>
     </div>
     <div class="score-board">
         <div class="user-score score">
-            <h2>Your Score: /5</h2>
+            <h2 class="man-score">Your Score: </h2>
         </div>
         <div class="reset">
             <button class="reset-btn">Reset</button>
         </div>
         <div class="machine-score score">
-            <h2>Machine's Score: /5</h2>
+            <h2 class="cpu-score">Machine's Score: </h2>
         </div>
     </div>
 </body>

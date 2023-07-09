@@ -1,9 +1,9 @@
-console.log('Keep going')
+console.log('Keep going 🍊')
 
-// 1. Prompt the user to input rock, paper, scissors 
+// 1. Get user to input rock, paper, scissors with buttons DOM and event listeners
 // 2. Create funct called getComputerChoice that randomly returns rock, paper, scissors 
 // 3. Create funct that plays a single round of rps with 2 params & declares winner after each round
-// 4. Create funct called game that uses the above funct to play 5 rounds keeps score and declares a winner at end
+// 4. Create funct called game that uses the above functs to play multiple rounds, keeps score, and declares a winner once rounds hit multiples of 5
 
 // DOM Manipulation
 const rounds = document.querySelector("#rounds");
@@ -17,6 +17,7 @@ let userScore = document.querySelector(".man-score");
 let cpuScore = document.querySelector(".cpu-score");
 let result = document.querySelector(".title-results");
 let currentRound = document.querySelector(".current-round");
+let finals = document.querySelector(".finals")
 
 
 let userChoice;
@@ -26,6 +27,7 @@ let tie = 0;
 let gamesPlayed = 0;
 let results;
 let play;
+let finalScore;
 
 // add event listeners to each option and if clicked update choice
 rock.addEventListener("click", () => {
@@ -69,12 +71,23 @@ function game(play, gamesPlayed, cpu) {
     if (gamesPlayed % 5 === 0) {
         // determine the winner after the specified rounds are completed
         if (userTotal > cpuTotal) {
-            console.log(`You Won best ${userTotal} out of ${gamesPlayed} with ${tie} tie(s).`)
+            console.log(`You Won best ${userTotal} out of ${gamesPlayed} with ${tie} tie(s)`);
+            finalScore = `You Won best ${userTotal} out of ${gamesPlayed} with ${tie} tie(s)`;
+            finals.style.display = "flex";
+            finals.textContent = `${finalScore}`;
         } else if (userTotal < cpuTotal) {
-            console.log(`The CPU beat you by ${cpuTotal - userTotal} round(s) in a ${gamesPlayed} round match with ${tie} tie(s).`)
+            console.log(`The Machine beat you by ${cpuTotal - userTotal} round(s) in a ${gamesPlayed} round match with ${tie} tie(s)`);
+            finalScore = `The Machine beat you by ${cpuTotal - userTotal} round(s) in a ${gamesPlayed} round match with ${tie} tie(s)`;
+            finals.style.display = "flex";
+            finals.textContent = `${finalScore}`;
         } else {
-            console.log(`It was a draw you won ${userTotal} round(s) and the cpu won ${cpuTotal} round(s) in a ${gamesPlayed} round match with ${tie} ties.`)
+            console.log(`It was a draw you won ${userTotal} round(s) and the Machine won ${cpuTotal} round(s) in a ${gamesPlayed} round match with ${tie} tie(s)`);
+            finalScore = `It was a draw you won ${userTotal} round(s) and the Machine won ${cpuTotal} round(s) in a ${gamesPlayed} round match with ${tie} tie(s)`;
+            finals.style.display = "flex";
+            finals.textContent = `${finalScore}`;
         }
+    } else {
+        finals.style.display = "none";
     };
     currentRound.textContent = `Round: ${gamesPlayed}`;
     userWeapon.textContent = `You Selected: ${userChoice}.`;

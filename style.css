@@ -7,8 +7,12 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding-top: 25px;
+    padding-top: 5px;
     /* padding: 25px 50px; */
+    overflow-y: hidden;
+    /**hide vertical*/
+    overflow-x: hidden;
+    /**hide horizontal*/
 }
 
 .title {
@@ -24,6 +28,7 @@ body {
 .rounds {
     display: flex;
     padding-right: 5px;
+    margin-top: 0px;
     /* flex: 1 1 auto; */
     /* gap: 10px; */
 }
@@ -110,8 +115,9 @@ button {
 }
 
 .reset {
-    align-self: center
-        /* margin-bottom: 5px; */
+    align-self: center;
+    /* margin-bottom: 5px; */
+    margin-top: -35px;
 }
 
 .reset button {
@@ -123,4 +129,18 @@ button {
     background: teal;
     border: solid rgb(255, 140, 0) 2px;
     cursor: pointer;
+}
+
+.finals-div {
+    margin-top: -25px;
+    margin-bottom: -5px;
+}
+
+.finals {
+    display: none;
+    background: teal;
+    border-radius: 10px;
+    align-content: center;
+    color: white;
+    padding: 5px 15px;
 }

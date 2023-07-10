@@ -12,6 +12,8 @@ const paper = document.querySelector(".paper");
 const scissors = document.querySelector(".scissors");
 const reset = document.querySelector(".reset-btn");
 const buttons = document.querySelector(".btn");
+let userContainer = document.querySelector(".container");
+let cpuContainer = document.querySelector(".cpu-container");
 let userWeapon = document.querySelector(".user-choice");
 let cpuWeapon = document.querySelector(".cpu-choice");
 let userScore = document.querySelector(".man-score");
@@ -81,12 +83,14 @@ function game(play, gamesPlayed, cpu) {
             finalScore = `You Won best ${userTotal} out of ${gamesPlayed} with ${tie} tie(s)`;
             finals.style.display = "flex";
             reset.style.display = "flex";
+            userContainer.style.border = "thick dashed teal";
             finals.textContent = `${finalScore}`;
         } else {
             console.log(`The Machine beat you by ${cpuTotal - userTotal} round(s) in a ${gamesPlayed} round match with ${tie} tie(s)`);
             finalScore = `The Machine beat you by ${cpuTotal - userTotal} round(s) in a ${gamesPlayed} round match with ${tie} tie(s)`;
             finals.style.display = "flex";
             reset.style.display = "flex";
+            cpuContainer.style.border = "thick dashed white";
             finals.textContent = `${finalScore}`;
         }
     } else {

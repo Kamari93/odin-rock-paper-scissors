@@ -29,6 +29,8 @@ let results;
 let play;
 let finalScore;
 
+reset.style.display = "none";
+
 // add event listeners to each option and if clicked update choice
 rock.addEventListener("click", () => {
     userChoice = "Rock";
@@ -68,22 +70,19 @@ function game(play, gamesPlayed, cpu) {
     console.log(`user:${userTotal} | cpuTotal:${cpuTotal} | tieTotal: ${tie}`);
     results = [`{user:${userTotal}`, `{cpuTotal:${cpuTotal}`, `Ties: ${tie}`];
 
-    if (gamesPlayed % 5 === 0) {
-        // determine the winner after the specified rounds are completed
+    if (userTotal === 5 || cpuTotal === 5) {
+        // whoever gets to 5 points first wins
         if (userTotal > cpuTotal) {
             console.log(`You Won best ${userTotal} out of ${gamesPlayed} with ${tie} tie(s)`);
             finalScore = `You Won best ${userTotal} out of ${gamesPlayed} with ${tie} tie(s)`;
             finals.style.display = "flex";
+            reset.style.display = "flex";
             finals.textContent = `${finalScore}`;
-        } else if (userTotal < cpuTotal) {
+        } else {
             console.log(`The Machine beat you by ${cpuTotal - userTotal} round(s) in a ${gamesPlayed} round match with ${tie} tie(s)`);
             finalScore = `The Machine beat you by ${cpuTotal - userTotal} round(s) in a ${gamesPlayed} round match with ${tie} tie(s)`;
             finals.style.display = "flex";
-            finals.textContent = `${finalScore}`;
-        } else {
-            console.log(`It was a draw you won ${userTotal} round(s) and the Machine won ${cpuTotal} round(s) in a ${gamesPlayed} round match with ${tie} tie(s)`);
-            finalScore = `It was a draw you won ${userTotal} round(s) and the Machine won ${cpuTotal} round(s) in a ${gamesPlayed} round match with ${tie} tie(s)`;
-            finals.style.display = "flex";
+            reset.style.display = "flex";
             finals.textContent = `${finalScore}`;
         }
     } else {
@@ -92,8 +91,8 @@ function game(play, gamesPlayed, cpu) {
     currentRound.textContent = `Round: ${gamesPlayed}`;
     userWeapon.textContent = `You Selected: ${userChoice}.`;
     cpuWeapon.textContent = `Machine Selected: ${cpu}.`;
-    userScore.textContent = `Your Score: ${userTotal}/${gamesPlayed}`;
-    cpuScore.textContent = `Machine's Score: ${cpuTotal}/${gamesPlayed}`;
+    userScore.textContent = `Your Score: ${userTotal}`;
+    cpuScore.textContent = `Machine's Score: ${cpuTotal}`;
     result.textContent = `${results[2]}`;
 }
 

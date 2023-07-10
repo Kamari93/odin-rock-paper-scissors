@@ -11,6 +11,7 @@ const rock = document.querySelector(".rock");
 const paper = document.querySelector(".paper");
 const scissors = document.querySelector(".scissors");
 const reset = document.querySelector(".reset-btn");
+const buttons = document.querySelector(".btn");
 let userWeapon = document.querySelector(".user-choice");
 let cpuWeapon = document.querySelector(".cpu-choice");
 let userScore = document.querySelector(".man-score");
@@ -32,32 +33,30 @@ let finalScore;
 reset.style.display = "none";
 
 // add event listeners to each option and if clicked update choice
-rock.addEventListener("click", () => {
-    userChoice = "Rock";
-    // console.log(userChoice)
-    let cpu = getComputerChoice();
-    play = playRound(userChoice, cpu);
-    gamesPlayed++;
-    game(play, gamesPlayed, cpu)
-});
+rock.addEventListener("click", playRock);
+paper.addEventListener("click", playPaper);
+scissors.addEventListener("click", playScissors);
 
-paper.addEventListener("click", () => {
-    userChoice = "Paper";
-    // console.log(userChoice)
-    let cpu = getComputerChoice();
-    play = playRound(userChoice, cpu);
-    gamesPlayed++;
-    game(play, gamesPlayed, cpu)
-});
+function playRock() {
+    getUser("Rock");
+};
 
-scissors.addEventListener("click", () => {
-    userChoice = "Scissors";
+function playPaper() {
+    getUser("Paper");
+};
+
+function playScissors() {
+    getUser("Scissors");
+};
+
+function getUser(choice) {
+    userChoice = choice;
     // console.log(userChoice)
     let cpu = getComputerChoice();
     play = playRound(userChoice, cpu);
     gamesPlayed++;
     game(play, gamesPlayed, cpu)
-});
+};
 
 function game(play, gamesPlayed, cpu) {
     if (play.includes('win')) {
@@ -71,6 +70,11 @@ function game(play, gamesPlayed, cpu) {
     results = [`{user:${userTotal}`, `{cpuTotal:${cpuTotal}`, `Ties: ${tie}`];
 
     if (userTotal === 5 || cpuTotal === 5) {
+        // disable the event listeners to indicate completion of game
+        rock.removeEventListener("click", playRock);
+        paper.removeEventListener("click", playPaper);
+        scissors.removeEventListener("click", playScissors);
+
         // whoever gets to 5 points first wins
         if (userTotal > cpuTotal) {
             console.log(`You Won best ${userTotal} out of ${gamesPlayed} with ${tie} tie(s)`);

@@ -9,7 +9,7 @@ body {
     align-items: center;
     padding-top: 5px;
     /* padding: 25px 50px; */
-    overflow-y: hidden;
+    /* overflow-y: hidden; */
     /**hide vertical*/
     overflow-x: hidden;
     /**hide horizontal*/
@@ -143,4 +143,13 @@ button {
     align-content: center;
     color: white;
     padding: 5px 15px;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    padding: 20px 50px;
+    margin-top: auto;
+    font-size: 15px;
 }
